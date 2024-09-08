@@ -24,6 +24,10 @@ const store = createStore(reducer)
 
 console.log(store.getState())
 
-store.dispatch({type:increment})
+store.subscribe(() => {
+    console.log(store.getState())
+})
 
-console.log(store.getState())
+store.dispatch({ type: increment })
+store.dispatch({ type: increment })
+store.dispatch({ type: increment })
