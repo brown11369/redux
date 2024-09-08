@@ -5,3 +5,5 @@ const reducer=(state={amount:0},action)=>{
 }
 const store=createStore(reducer)
 
+console.log(store.getState())
+
