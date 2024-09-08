@@ -28,6 +28,20 @@ store.subscribe(() => {
     console.log(store.getState())
 })
 
-store.dispatch({ type: increment })
-store.dispatch({ type: increment })
-store.dispatch({ type: increment })
+const incrementFun = () => {
+    return { type: increment }
+}
+const incrementByValueFun = (value) => {
+    return { type: incrementByValue, payload: value }
+}
+const decrementFun = () => {
+    return { type: "decrement" }
+}
+const decrementByValueFun = (value) => {
+    return { type: decrementByValue, payload: value }
+}
+
+store.dispatch(incrementFun())
+store.dispatch(incrementByValueFun(600))
+store.dispatch(decrementFun())
+store.dispatch(decrementByValueFun(300))
