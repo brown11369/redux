@@ -19,8 +19,11 @@ const reducer = (state = { amount: 0 }, action) => {
         default:
             return state
     }
-    return state
 }
 const store = createStore(reducer)
+
+console.log(store.getState())
+
+store.dispatch({type:increment})
 
 console.log(store.getState())
