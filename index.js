@@ -1,14 +1,16 @@
 import { createStore } from "redux";
 
-// action type
+// action name constants
 const increment = "increment"
 const incrementByValue = "incrementByValue"
 const decrement = "decrement"
 const decrementByValue = "decrementByValue"
 
+// reducer
 const reducer = (state = { amount: 0 }, action) => {
     switch (action.type) {
         case increment:
+            // immutability
             return { amount: state.amount + 1 }
         case incrementByValue:
             return { amount: state.amount + action.payload }
@@ -20,14 +22,18 @@ const reducer = (state = { amount: 0 }, action) => {
             return state
     }
 }
+// store
 const store = createStore(reducer)
 
+// global state
 console.log(store.getState())
 
+// subscribe
 store.subscribe(() => {
     console.log(store.getState())
 })
 
+// actions creators
 const incrementFun = () => {
     return { type: increment }
 }
@@ -41,6 +47,7 @@ const decrementByValueFun = (value) => {
     return { type: decrementByValue, payload: value }
 }
 
+// dispatch
 store.dispatch(incrementFun())
 store.dispatch(incrementByValueFun(600))
 store.dispatch(decrementFun())
