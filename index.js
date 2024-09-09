@@ -1,4 +1,5 @@
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
+import logger from "redux-logger";
 
 // action name constants
 const increment = "increment"
@@ -23,15 +24,15 @@ const reducer = (state = { amount: 0 }, action) => {
     }
 }
 // store
-const store = createStore(reducer)
+const store = createStore(reducer, applyMiddleware(logger.default))
 
 // global state
 console.log(store.getState())
 
 // subscribe
-store.subscribe(() => {
-    console.log(store.getState())
-})
+// store.subscribe(() => {
+//     console.log(store.getState())
+// })
 
 // actions creators
 const incrementFun = () => {
@@ -47,7 +48,7 @@ const decrementByValueFun = (value) => {
     return { type: decrementByValue, payload: value }
 }
 
-// dispatch
+// dispatch (it dispatch like an event)
 store.dispatch(incrementFun())
 store.dispatch(incrementByValueFun(600))
 store.dispatch(decrementFun())
