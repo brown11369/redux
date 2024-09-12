@@ -1,30 +1,7 @@
 import { useState } from "react";
-import "./Account.css"; // Import the CSS file
+import "./Account.css";
 
-const Account = () => {
-    const [account, setAccount] = useState({ amount: 0 });
-    const [value, setValue] = useState(0);
-
-    const increment = () => {
-        setAccount(prevAccount => ({ amount: prevAccount.amount + 100 }));
-    };
-
-    const decrement = () => {
-        setAccount(prevAccount => ({ amount: prevAccount.amount - 100 }));
-    };
-
-    const incrementByAmount = (value) => {
-        setAccount(prevAccount => ({ amount: prevAccount.amount + value }));
-    };
-
-    const handleInputChange = (e) => {
-        const newValue = +e.target.value;
-        if (!isNaN(newValue)) {
-            setValue(newValue);
-        } else {
-            setValue(0); // Handle invalid input by resetting to 0
-        }
-    };
+const Account = ({ account, value, increment, decrement, incrementByAmount, handleInputChange }) => {
 
     return (
         <div className="account-container">
