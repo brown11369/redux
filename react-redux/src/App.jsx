@@ -1,14 +1,15 @@
 import { useState } from 'react';
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import './App.css';
 import Account from './components/Account';
 import Bonus from './components/Bonus';
+import { initializeUserFun } from './actions';
 
 function App({ store }) {
   const amount = useSelector(state => state.account.amount)
   const points = useSelector(state => state.bonus.points)
   const [value, setValue] = useState(0);
-
+  
   const handleInputChange = (e) => {
     const newValue = +e.target.value;
     if (!isNaN(newValue)) {

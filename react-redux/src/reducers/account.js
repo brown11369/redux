@@ -1,9 +1,15 @@
-import { decrement, increment, incrementByValue, init } from "../actions"
+import { accountUserFullfilled, accountUserPending, accountUserRejected, decrement, increment, incrementByValue, init } from "../actions"
 
-export const accountReducer = (state = { amount: 1000 }, action) => {
+export const accountReducer = (state = { amount: 0 }, action) => {
     switch (action.type) {
         case init:
             return { amount: action.payload }
+        case accountUserPending:
+            return { ...state, pending: true }
+        case accountUserFullfilled:
+            return { amount: action.payload, pending: false }
+        case accountUserRejected:
+            return { ...state, error: action.error, pending: false }
         case increment:
             // immutability
             return { amount: state.amount + 100 }

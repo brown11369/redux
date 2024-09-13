@@ -1,15 +1,18 @@
 import "./Account.css";
-import { decrementFun, incrementByValueFun, incrementFun } from "../actions";
+import { decrementFun, incrementByValueFun, incrementFun, initializeUserFun } from "../actions";
 import { useDispatch, useSelector } from "react-redux";
 
 const Account = ({ store, value, handleInputChange }) => {
     const dispatch = useDispatch()
-    const amount = useSelector(state => state.account.amount)
+    const account = useSelector(state => state.account)
 
     return (
         <div className="account-container">
             <h4 className="account-heading">Account Component</h4>
-            <h3 className="account-amount">Amount: {amount}</h3>
+            {
+                account.pending ? <p>Loading...</p> : account?.error ? <p>{account?.error}</p> : <h3 className="account-amount">Amount: {account.amount}</h3>
+            }
+            <button className="account-button" onClick={() => dispatch(initializeUserFun(5))}>Init</button>
             <button className="account-button" onClick={() => dispatch(incrementFun())}>Increment +100</button>
             <button className="account-button" onClick={() => dispatch(decrementFun())}>Decrement -100</button>
             <input
