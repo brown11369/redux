@@ -1,31 +1,13 @@
 import { useState } from 'react';
+import { useSelector } from "react-redux"
 import './App.css';
 import Account from './components/Account';
 import Bonus from './components/Bonus';
 
 function App({ store }) {
-  console.log(store.getState().account.amount)
-  const [account, setAccount] = useState({ amount: 0 });
+  const amount = useSelector(state => state.account.amount)
+  const points = useSelector(state => state.bonus.points)
   const [value, setValue] = useState(0);
-
-  const [bonus, setBonus] = useState({ points: 0 });
-
-  const incrementBonus = () => {
-    setBonus({ points: bonus.points + 1 });
-  };
-
-
-  const increment = () => {
-    setAccount(prevAccount => ({ amount: prevAccount.amount + 100 }));
-  };
-
-  const decrement = () => {
-    setAccount(prevAccount => ({ amount: prevAccount.amount - 100 }));
-  };
-
-  const incrementByAmount = (value) => {
-    setAccount(prevAccount => ({ amount: prevAccount.amount + value }));
-  };
 
   const handleInputChange = (e) => {
     const newValue = +e.target.value;
@@ -36,15 +18,14 @@ function App({ store }) {
     }
   };
 
-
   return (
     <div className="app-container">
       <h1 className="app-heading">Account Statement</h1>
       <div className="app-info">
-        <p className="app-text">Amount: {store.getState().account.amount}</p>
-        <p className="app-text">Bonus: {store.getState().bonus.points}</p>
+        <p className="app-text">Amount: {amount}</p>
+        <p className="app-text">Bonus: {points}</p>
       </div>
-      <Account store={store} account={account} value={value} increment={increment} decrement={decrement} incrementByAmount={incrementByAmount} handleInputChange={handleInputChange} />
+      <Account store={store} value={value} handleInputChange={handleInputChange} />
       <Bonus store={store} />
     </div>
   );
