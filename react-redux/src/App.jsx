@@ -3,7 +3,8 @@ import './App.css';
 import Account from './components/Account';
 import Bonus from './components/Bonus';
 
-function App() {
+function App({ store }) {
+  console.log(store.getState().account.amount)
   const [account, setAccount] = useState({ amount: 0 });
   const [value, setValue] = useState(0);
 
@@ -40,11 +41,11 @@ function App() {
     <div className="app-container">
       <h1 className="app-heading">Account Statement</h1>
       <div className="app-info">
-        <p className="app-text">Amount: {account.amount}</p>
-        <p className="app-text">Bonus: {bonus.points}</p>
+        <p className="app-text">Amount: {store.getState().account.amount}</p>
+        <p className="app-text">Bonus: {store.getState().bonus.points}</p>
       </div>
-      <Account account={account} value={value} increment={increment} decrement={decrement} incrementByAmount={incrementByAmount} handleInputChange={handleInputChange} />
-      <Bonus bonus={bonus} incrementBonus={incrementBonus} />
+      <Account store={store} account={account} value={value} increment={increment} decrement={decrement} incrementByAmount={incrementByAmount} handleInputChange={handleInputChange} />
+      <Bonus store={store} />
     </div>
   );
 }
