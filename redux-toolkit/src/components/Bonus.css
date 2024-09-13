@@ -1,0 +1,37 @@
+/* Bonus.css */
+
+.bonus-container {
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  .bonus-heading {
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .bonus-points {
+    font-size: 2em;
+    color: #007bff;
+    margin: 10px 0;
+  }
+  
+  .increment-button {
+    background-color: #28a745;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1em;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .increment-button:hover {
+    background-color: #218838;
+  }
+  

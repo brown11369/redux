@@ -1,0 +1,32 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+}
+
+/* App.css */
+
+.app-container {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 20px;
+}
+
+.app-heading {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.app-info {
+  margin-bottom: 20px;
+}
+
+.app-text {
+  font-size: 1.2em;
+  color: #666;
+}
+
+.app-info p {
+  margin: 10px 0;
+}
